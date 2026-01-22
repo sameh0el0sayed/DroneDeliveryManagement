@@ -1,7 +1,10 @@
 package com.example.DroneApp.Service;
 
+import com.example.DroneApp.Enum.RoleEnum;
 import com.example.DroneApp.Exception.InformationExistException;
+import com.example.DroneApp.Model.Drone;
 import com.example.DroneApp.Model.User;
+import com.example.DroneApp.Repository.DroneRepository;
 import com.example.DroneApp.Repository.UserRepository;
 import com.example.DroneApp.Security.JWTUtils;
 import com.example.DroneApp.Security.MyUserDetails;
@@ -25,18 +28,20 @@ public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
+    private final DroneRepository droneRepository;
     private final PasswordEncoder passwordEncoder;
     private final JWTUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
     private MyUserDetails myUserDetails;
 
     @Autowired
-    public UserService(UserRepository userRepository,
+    public UserService(UserRepository userRepository, DroneRepository droneRepository,
                        @Lazy PasswordEncoder passwordEncoder,
                        JWTUtils jwtUtils,
                        @Lazy AuthenticationManager authenticationManager,
                        @Lazy MyUserDetails myUserDetails) {
         this.userRepository = userRepository;
+        this.droneRepository = droneRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtils = jwtUtils;
         this.authenticationManager = authenticationManager;
@@ -45,14 +50,30 @@ public class UserService {
 
     public User createUser(User userObject) {
         logger.info("Service Calling createUser ==> ");
-        if (!userRepository.existsByEmailAddress(userObject.getEmailAddress())) {
-            userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
-            return userRepository.save(userObject);
-        } else {
+
+        if (userRepository.existsByEmailAddress(userObject.getEmailAddress())) {
             logger.warn("Attempt to register existing user with email: {}", userObject.getEmailAddress());
-            throw new InformationExistException("User with email address " + userObject.getEmailAddress() + " already exists.");
+            throw new InformationExistException(
+                    "User with email address " + userObject.getEmailAddress() + " already exists."
+            );
         }
+
+        userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
+        User savedUser = userRepository.save(userObject);
+
+        // If user is a drone, create and assign drone entity
+        if (userObject.getRole() == RoleEnum.ROLE_DRONE) {
+            Drone drone = new Drone();
+            drone.setName(savedUser.getUserName());
+            drone.setBroken(false);
+            drone.setCurrentOrder(null);
+            drone.setUser(savedUser);
+            droneRepository.save(drone);
+        }
+
+        return savedUser;
     }
+
 
     public User findUserByEmailAddress(String email) {
         logger.debug("Finding user by email: {}", email);

@@ -25,6 +25,10 @@ public class Drone {
     @JoinColumn(name = "current_order_id")
     private Order currentOrder;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", unique = true)
+    private User user;
+
     private LocalDateTime lastHeartbeat;
 
     // Constructors
@@ -52,4 +56,12 @@ public class Drone {
 
     public LocalDateTime getLastHeartbeat() { return lastHeartbeat; }
     public void setLastHeartbeat(LocalDateTime lastHeartbeat) { this.lastHeartbeat = lastHeartbeat; }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

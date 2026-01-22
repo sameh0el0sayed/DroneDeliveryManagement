@@ -26,6 +26,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
+    @OneToOne(mappedBy = "user")
+    private Drone drone;
+
     public Long getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class User {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public Drone getDrone() {
+        return drone;
+    }
+
+    public void setDrone(Drone drone) {
+        this.drone = drone;
     }
 }
