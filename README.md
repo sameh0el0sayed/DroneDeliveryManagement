@@ -59,5 +59,5 @@ The platform supports **users**, **drones**, and **administrators**, enabling or
 
 ### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-username/DroneDeliveryManagement.git
+git clone https://github.com/sameh0el0sayed/DroneDeliveryManagement.git
 cd DroneDeliveryManagement
