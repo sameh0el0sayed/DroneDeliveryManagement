@@ -21,7 +21,7 @@ The platform supports **users**, **drones**, and **administrators**, enabling or
 
 ### Database
 - H2 (development)
-- PostgreSQL / MySQL (production-ready)
+- PostgreSQL
 
 ### Testing & Tools
 - JUnit 5
@@ -61,3 +61,49 @@ The platform supports **users**, **drones**, and **administrators**, enabling or
 ```bash
 git clone https://github.com/sameh0el0sayed/DroneDeliveryManagement.git
 cd DroneDeliveryManagement
+```
+### Step 2. Create PostgreSQL Database
+
+Create a database in PostgreSQL:
+```bash
+CREATE DATABASE DroneAppDB;
+```
+
+## Step 3. Download and Run NATS
+Default port used by the application:
+```bash
+4222
+```
+
+## Step 4. Run the Application
+
+```
+mvn clean install
+mvn spring-boot:run
+```
+The application will start at:
+```
+http://localhost:8080
+```
+### Step 5. Test APIs Using Postman Collection
+Import the Postman collection included in the repository:
+[DroneApp.postman_collection.json ](https://github.com/sameh0el0sayed/DroneDeliveryManagement/blob/master/DroneApp.postman_collection.json)
+
+### Step 6. Authentication and Roles
+Use authentication APIs to register and login users.
+```
+Supported roles:
+
+ROLE_ADMIN
+ROLE_DRONE
+ROLE_USER
+```
+### Step 7. Unit Testing
+Controller unit tests are located at:
+```
+src/test/java/com/example/DroneApp/ControllerTest
+```
+Run tests using:
+```
+mvn test
+```
