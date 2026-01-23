@@ -1,0 +1,552 @@
+{
+  "info": {
+    "_postman_id": "3cf36ac2-2c71-4e04-a605-0fa67dd71219",
+    "name": "DroneApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "24397553",
+    "_collection_link": "https://go.postman.co/collection/24397553-3cf36ac2-2c71-4e04-a605-0fa67dd71219?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "createUser",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW1laHNyLm1lQGdtYWlsLmNvbSIsImlhdCI6MTc2ODgzMTg2MywiZXhwIjoxNzY4OTE4MjYzfQ.kCyFLheRCf4WKYuM3ykTZAlqUL_qba9FctX4Cyz9Z_E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userName\": \"Drone\",\r\n  \"emailAddress\": \"drone@example.com\",\r\n  \"password\": \"dronpass\",\r\n  \"role\": \"ROLE_DRONE\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/auth/users/register",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "loginUser",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYW1laHNyLm1lQGdtYWlsLmNvbSIsImlhdCI6MTc2ODgzMTg2MywiZXhwIjoxNzY4OTE4MjYzfQ.kCyFLheRCf4WKYuM3ykTZAlqUL_qba9FctX4Cyz9Z_E",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"drone@example.com\",\r\n    \"password\": \"dronpass\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/auth/users/login",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "auth",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "getAllOrders",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MDA0MDE4LCJleHAiOjE3NjkwOTA0MTh9.mIXMmiDgFWK1H78CcHGwe_UwXXX0vzDDFy_8qO97YDE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{localhost}}/api/admin/orders",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAllDrones",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MDA0MDE4LCJleHAiOjE3NjkwOTA0MTh9.mIXMmiDgFWK1H78CcHGwe_UwXXX0vzDDFy_8qO97YDE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{localhost}}/api/admin/drones",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "drones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateOrderLocation",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MDA0MDE4LCJleHAiOjE3NjkwOTA0MTh9.mIXMmiDgFWK1H78CcHGwe_UwXXX0vzDDFy_8qO97YDE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"origin\": {\r\n    \"latitude\": 26.2205,\r\n    \"longitude\": 50.5829\r\n  },\r\n  \"destination\": {\r\n    \"latitude\": 26.2351,\r\n    \"longitude\": 50.6012\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/api/admin/orders/1/location",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "orders",
+                "1",
+                "location"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "markDroneBroken",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsInN1YiI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MDA0MDE4LCJleHAiOjE3NjkwOTA0MTh9.mIXMmiDgFWK1H78CcHGwe_UwXXX0vzDDFy_8qO97YDE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"origin\": {\r\n    \"latitude\": 26.2205,\r\n    \"longitude\": 50.5829\r\n  },\r\n  \"destination\": {\r\n    \"latitude\": 26.2351,\r\n    \"longitude\": 50.6012\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/api/admin/drones/1/broken",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "drones",
+                "1",
+                "broken"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "submitOrder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"origin\": {\r\n    \"latitude\": 26.221,\r\n    \"longitude\": 50.583\r\n  },\r\n  \"destination\": {\r\n    \"latitude\": 26.234,\r\n    \"longitude\": 50.600\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/api/user/orders",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getUserOrders",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"origin\": {\r\n    \"latitude\": 26.221,\r\n    \"longitude\": 50.583\r\n  },\r\n  \"destination\": {\r\n    \"latitude\": 26.234,\r\n    \"longitude\": 50.600\r\n  }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/api/user/orders",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "withdrawOrder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{localhost}}/api/user/orders/1/withdraw",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "orders",
+                "1",
+                "withdraw"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getOrderById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{localhost}}/api/user/orders/2",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "user",
+                "orders",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Drone",
+      "item": [
+        {
+          "name": "reserveJob",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{localhost}}/api/drone/orders/reserve",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "orders",
+                "reserve"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "grabOrder",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/orders/2/grab",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "orders",
+                "2",
+                "grab"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "markDelivered",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/orders/1/delivered",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "orders",
+                "1",
+                "delivered"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "markFailed",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/orders/2/failed",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "orders",
+                "2",
+                "failed"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "broken",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/broken",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "broken"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "heartbeat",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"latitude\": 26.215,\r\n  \"longitude\": 50.611\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/heartbeat",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "heartbeat"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getCurrentOrder",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{localhost}}/api/drone/orders/current",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "drone",
+                "orders",
+                "current"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9EUk9ORSIsInN1YiI6ImRyb25lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MDg3OTAzLCJleHAiOjE3NjkxNzQzMDN9.MMNXk8_TK1dNs18-DyfG8wtei3wOHLSthiYNKJf7yqg",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
