@@ -16,6 +16,6 @@ public class NatsConfig {
 
     @Bean
     public Connection natsConnection() throws IOException, InterruptedException {
-        return Nats.connect(natsServer); // NATS server URL
+        return Nats.connect(natsServer);
     }
 }

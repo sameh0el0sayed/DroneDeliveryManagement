@@ -6,7 +6,6 @@ public class OrderRequestDto {
     private Location origin;
     private Location destination;
 
-    // Getters and setters
     public Location getOrigin() { return origin; }
     public void setOrigin(Location origin) { this.origin = origin; }
 

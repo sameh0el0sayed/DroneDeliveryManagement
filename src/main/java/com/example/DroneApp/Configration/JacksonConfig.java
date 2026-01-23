@@ -10,7 +10,7 @@ public class JacksonConfig {
 
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper(); // Spring-managed ObjectMapper
+        return new ObjectMapper();
     }
 }
 
